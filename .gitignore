@@ -1,0 +1,13 @@
+# ssl certifications
+*.key
+*.crt
+*.csr
+*.ext
+*.srl
+*.pass
+
+# configurations
+*.conf
+
+# dotenv
+*.env

@@ -1,0 +1,10 @@
+server {
+    listen      443 ssl;
+    server_name ${DOMAIN} www.${DOMAIN};
+    root    /var/www/public/html;
+    ssl_certificate     /etc/nginx/ssl/${SSL_CERT};
+    ssl_certificate_key /etc/nginx/ssl/${SSL_KEY};
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_session_timeout 10m;
+    keepalive_timeout 70;
+}
