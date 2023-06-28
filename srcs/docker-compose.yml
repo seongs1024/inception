@@ -2,9 +2,16 @@ version: '3'
 
 services:
   nginx:
+    env_file:
+       - .env
     build:
       context: .
       dockerfile: requirements/nginx/Dockerfile
+      args:
+        DOMAIN: ${DOMAIN}
+        SSL_CERT: ${SSL_CERT}
+        SSL_KEY: ${SSL_KEY}
+        SSL_PASS: ${SSL_PASS}
     container_name: nginx
 #    depends_on:
 #      - wordpress
@@ -13,13 +20,13 @@ services:
 #    networks:
 #      - inception
     environment:
-      - DOMAIN=${DOMAIN}
-      - SSL_CERT=${SSL_CERT}
-      - SSL_KEY=${SSL_KEY}
-      - SSL_PASS=${SSL_PASS}
+      DOMAIN: "${DOMAIN}"
+      SSL_CERT: "${SSL_CERT}"
+      SSL_KEY: "${SSL_KEY}"
+      SSL_PASS: "${SSL_PASS}"
     volumes:
-      - ./requirements/nginx/conf:/etc/nginx/http.d/
-      - ./requirements/nginx/tools:/etc/nginx/ssl/
+#      - ./requirements/nginx/conf:/etc/nginx/http.d/
+#      - ./requirements/nginx/tools:/etc/nginx/ssl/
       - ./requirements/nginx/public:/var/www/public
 #      - wp-volume:/var/www/
       - ./requirements/tools:/etc/nginx/cert

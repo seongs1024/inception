@@ -9,7 +9,7 @@ http {
         root    /var/www/public/html;
         ssl_certificate     /etc/nginx/cert/${SSL_CERT};
         ssl_certificate_key /etc/nginx/cert/${SSL_KEY};
-        ssl_password_file	/etc/nginx/cert/${SSL_PASS};
+        ssl_password_file   /etc/nginx/cert/${SSL_PASS};
         ssl_protocols       TLSv1.2 TLSv1.3;
         ssl_session_timeout 10m;
         keepalive_timeout 70;
