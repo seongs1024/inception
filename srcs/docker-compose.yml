@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: requirements/nginx/Dockerfile
+    container_name: nginx
+#    depends_on:
+#      - wordpress
+    ports:
+      - "443:443"
+#    networks:
+#      - inception
+    environment:
+      - DOMAIN=${DOMAIN}
+      - SSL_CERT=${SSL_CERT}
+      - SSL_KEY=${SSL_KEY}
+      - SSL_PASS=${SSL_PASS}
+    volumes:
+      - ./requirements/nginx/conf:/etc/nginx/http.d/
+      - ./requirements/nginx/tools:/etc/nginx/ssl/
+      - ./requirements/nginx/public:/var/www/public
+#      - wp-volume:/var/www/
+      - ./requirements/tools:/etc/nginx/cert
+    restart: always

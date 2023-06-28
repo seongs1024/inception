@@ -17,3 +17,5 @@ expect gen_ssl_csr.exp ${DOMAIN} ${PASSWORD}
 
 printf "\n==GENERATE $DOMAIN.crt==\n"
 expect gen_ssl_crt.exp ${DOMAIN} ${PASSWORD}
+
+printf "Generated files:\n\t%s.crt\n\t%s.key\n\t%s.pass\n\t%s.csr\n" ${DOMAIN} ${DOMAIN} ${DOMAIN} ${DOMAIN}
