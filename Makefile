@@ -1,4 +1,4 @@
-up: cert_exists
+up: cert_exists volumes_mounted
 	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d
 
 down: 
@@ -16,9 +16,19 @@ cert_exists: srcs/requirements/nginx/cert
 env: 
 	@make -s -C srcs/requirements/tools env
 
-clean:
+clean: prune
 	rm -rf srcs/requirements/nginx/cert
 	rm -rf srcs/.env
-	make prune
+	rm -rf data
 
-.PHONY: up down prune cert env clean
+volumes:
+	@mkdir -p data/mariadb
+	@chmod 777 data
+	@chmod 777 data/mariadb
+	@mkdir -p data/wordpress
+	@chmod 777 data/wordpress
+
+volumes_mounted: data/mariadb data/wordpress
+	@echo "volumes mounted!"
+
+.PHONY: up down prune cert env clean volumes volumes_mounted cert_exists

@@ -12,3 +12,6 @@ srcs/requirements/nginx/cert/
 
 # dotenv
 *.env
+
+# data
+data/
