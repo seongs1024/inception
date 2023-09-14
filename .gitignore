@@ -5,6 +5,7 @@
 *.ext
 *.srl
 *.pass
+srcs/requirements/nginx/cert/
 
 # configurations
 *.conf

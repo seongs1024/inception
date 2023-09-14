@@ -22,5 +22,5 @@ services:
     volumes:
       - ./requirements/nginx/public:/var/www/public
 #      - wp-volume:/var/www/
-      - ./requirements/tools:/etc/nginx/cert
+      - ./requirements/nginx/cert:/etc/nginx/cert
     restart: always
