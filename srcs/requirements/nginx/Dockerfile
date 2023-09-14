@@ -10,4 +10,4 @@ RUN envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/nginx.conf
 
 EXPOSE 443
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
