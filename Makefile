@@ -19,7 +19,7 @@ env:
 env_sets: srcs/.env
 	@echo ".env sets!"
 
-clean: prune
+clean:
 	rm -rf srcs/requirements/nginx/cert
 	rm -rf srcs/.env
 	rm -rf /home/${USER}/data
