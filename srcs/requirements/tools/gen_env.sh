@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 filename='../../.env'
 template='../../.env.example'
