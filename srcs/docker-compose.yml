@@ -45,7 +45,7 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: $(pwd)/data/mariadb
+      device: ${PWD}/data/mariadb
 networks:
     inception:
         driver: bridge
