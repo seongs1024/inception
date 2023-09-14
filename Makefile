@@ -22,13 +22,13 @@ env_sets: srcs/.env
 clean: prune
 	rm -rf srcs/requirements/nginx/cert
 	rm -rf srcs/.env
-	rm -rf data
+	rm -rf /home/${USER}/data
 
 volume:
-	@mkdir -p data/mariadb
-	@mkdir -p data/wordpress
+	@mkdir -p /home/${USER}/data/mariadb
+	@mkdir -p /home/${USER}/data/wordpress
 
-volume_mounted: data/mariadb data/wordpress
+volume_mounted: /home/${USER}/data/mariadb /home/${USER}/data/wordpress
 	@echo "volume mounted!"
 
 .PHONY: up down prune cert env clean volumes cert_exists env_sets volume_mounted
