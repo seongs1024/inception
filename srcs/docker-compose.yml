@@ -9,9 +9,6 @@ services:
       dockerfile: requirements/nginx/Dockerfile
       args:
         DOMAIN: ${DOMAIN}
-        SSL_CERT: ${SSL_CERT}
-        SSL_KEY: ${SSL_KEY}
-        SSL_PASS: ${SSL_PASS}
     container_name: nginx
 #    depends_on:
 #      - wordpress
