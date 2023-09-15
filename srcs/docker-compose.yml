@@ -1,5 +1,21 @@
 version: '3'
 
+volumes:
+  db-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/${USER}/data/mariadb
+  wp-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/${USER}/data/wordpress
+
+networks:
+  inception:
+    driver: bridge
+
 services:
   nginx:
     env_file:
@@ -20,7 +36,7 @@ services:
       #- ./requirements/nginx/public:/var/www/public
       - ./requirements/nginx/cert:/etc/nginx/cert
       - wp-volume:/var/www/
-    restart: always
+    restart: unless-stopped
 
   mariadb:
     build:
@@ -38,7 +54,7 @@ services:
       - inception
     volumes:
       - db-volume:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
 
   wordpress:
     build:
@@ -48,27 +64,21 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_USER_PASS: ${DB_USER_PASS}
+        WP_TITLE: ${WP_TITLE}
+        WP_ADMIN: ${WP_ADMIN}
+        WP_ADMIN_PASS: ${WP_ADMIN_PASS}
+        WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+        WP_USER: ${WP_USER}
+        WP_USER_PASS: ${WP_USER_PASS}
+        WP_USER_EMAIL: ${WP_USER_EMAIL}
     container_name: wordpress
+    ports:
+      - "9000:9000"
     depends_on:
       - mariadb
     networks:
       - inception
     volumes:
       - wp-volume:/var/www/
-    restart: always
+    restart: unless-stopped
 
-volumes:
-  db-volume:
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/${USER}/data/mariadb
-  wp-volume:
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/${USER}/data/wordpress
-
-networks:
-    inception:
-        driver: bridge
