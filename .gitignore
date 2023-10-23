@@ -7,9 +7,6 @@
 *.pass
 srcs/requirements/nginx/cert/
 
-# configurations
-*.conf
-
 # dotenv
 *.env
 

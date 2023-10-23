@@ -67,3 +67,8 @@ make env
 make volume
 make
 ```
+
+## Rerferences
+
+1. [foobarberis](https://github.com/foobarberis/42-inception/blob/main/srcs/requirements/wordpress/Dockerfile)
+1. [tdameros](https://github.com/tdameros/42-inception/blob/main/srcs/.env.example)

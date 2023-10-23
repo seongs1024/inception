@@ -1,8 +1,12 @@
-FROM alpine:3.17
+FROM debian:bullseye
 
 ARG DOMAIN
 
-RUN apk update && apk upgrade && apk add nginx gettext
+RUN apt update -y && \
+    apt upgrade -y && \
+    apt install -y gettext \
+      nginx \
+      openssl
 RUN mkdir -p /etc/nginx/conf_temp
 
 COPY ./requirements/nginx/conf/nginx.conf.template /etc/nginx/conf_temp/nginx.conf.template
