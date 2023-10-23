@@ -39,6 +39,8 @@ services:
     restart: unless-stopped
 
   mariadb:
+    env_file:
+       - .env  
     build:
       context: .
       dockerfile: requirements/mariadb/Dockerfile
@@ -57,6 +59,8 @@ services:
     restart: unless-stopped
 
   wordpress:
+    env_file:
+       - .env
     build:
       context: .
       dockerfile: requirements/wordpress/Dockerfile
